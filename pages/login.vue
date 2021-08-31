@@ -4,7 +4,7 @@
       <h2>Login</h2>
       <input type="text" placeholder="Enter email" v-model="email" />
       <input type="text" placeholder="Enter password" v-model="password" />
-      <button @click="login">Login</button>
+      <button @click="test">Login</button>
     </div>
   </div>
 </template>
@@ -17,14 +17,18 @@ export default {
       password: ""
     };
   },
+
   methods: {
+    test() {
+      console.log("test");
+    },
     login() {
+      console.log("login");
       this.$fire.auth
         .signInWithEmailAndPassword(this.email, this.password)
         .then(user => {
           console.log("Logged In");
           $nuxt.$router.push("/");
-          console.log(this.$fire.auth.currentUser);
           // ...
         })
         .catch(err => {
