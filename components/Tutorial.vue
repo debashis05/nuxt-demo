@@ -21,7 +21,7 @@ export default {
         const usersRef = this.$fire.firestore.collection("USERS");
     const users = await usersRef.get();
     users.forEach(doc => {
-      this.FireData = doc.data();
+      this.fireData = doc.data();
     });
     },
     logout() {

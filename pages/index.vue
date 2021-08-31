@@ -9,19 +9,21 @@
 export default {
   data() {
     return {
-      asyncFireData: null
+      asyncFireData: ""
     };
   },
   async asyncData({ app }) {
-    console.log("RAN");
     try {
       const usersRef = app.$fire.firestore.collection("SERVER_DATA");
     const users = await usersRef.get();
     users.forEach(doc => {
-      this.asyncFireData = doc.data();
+      console.log(doc.data())
+      return {
+        asyncFireData : doc.data().NAME
+      }
     });
     } catch (error) {
-      console.log(error.message)
+      console.log(error)
     }
   }
 };

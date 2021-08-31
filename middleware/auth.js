@@ -1,5 +1,7 @@
 export default function({ app, route, redirect, res }) {
-  const user = res.locals.user;
+  if(res) {
+    const user = res.locals.user;
+  console.log(res.locals);
   if (route.path !== "/login") {
     if (!user) {
       return redirect("/login");
@@ -10,5 +12,6 @@ export default function({ app, route, redirect, res }) {
     } else {
       return redirect("/");
     }
+  }
   }
 }
