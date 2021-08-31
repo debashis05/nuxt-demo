@@ -37,7 +37,6 @@ export const actions = {
       console.log("NO_USER");
       state.commit("SET_USER", null);
     } else {
-      console.log("user 1");
       // Do something with the authUser and the claims object...
       const { uid, email } = authUser;
       state.commit("SET_USER", { uid, email, isAdmin: claims.custom_claim });
