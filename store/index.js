@@ -12,16 +12,19 @@ export const mutations = {
     state.firestoreUsers = user;
   },
   ON_AUTH_STATE_CHANGED_MUTATION(state, { authUser, claims }) {
-    const { uid, email, emailVerified, displayName } = authUser;
 
-    state.authUser = {
-      uid,
-      displayName,
-      email,
-      emailVerified,
-      // use custom claims to control access (see https://firebase.google.com/docs/auth/admin/custom-claims)
-      isAdmin: claims.custom_claim
-    };
+    if (authUser) {
+      const { uid, email, emailVerified, displayName } = authUser;
+
+      state.authUser = {
+        uid,
+        displayName,
+        email,
+        emailVerified,
+        // use custom claims to control access (see https://firebase.google.com/docs/auth/admin/custom-claims)
+        isAdmin: claims.custom_claim
+      };
+    }
   }
 };
 

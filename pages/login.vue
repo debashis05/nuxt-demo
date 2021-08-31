@@ -4,7 +4,7 @@
       <h2>Login</h2>
       <input type="text" placeholder="Enter email" v-model="email" />
       <input type="text" placeholder="Enter password" v-model="password" />
-      <button @click="test">Login</button>
+      <button @click="login">Login</button>
     </div>
   </div>
 </template>
@@ -19,9 +19,6 @@ export default {
   },
 
   methods: {
-    test() {
-      console.log("test");
-    },
     login() {
       console.log("login");
       this.$fire.auth

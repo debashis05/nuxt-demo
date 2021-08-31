@@ -14,11 +14,15 @@ export default {
   },
   async asyncData({ app }) {
     console.log("RAN");
-    const usersRef = app.$fire.firestore.collection("SERVER_DATA");
+    try {
+      const usersRef = app.$fire.firestore.collection("SERVER_DATA");
     const users = await usersRef.get();
     users.forEach(doc => {
       this.asyncFireData = doc.data();
     });
+    } catch (error) {
+      console.log(error.message)
+    }
   }
 };
 </script>

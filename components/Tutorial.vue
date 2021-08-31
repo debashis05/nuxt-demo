@@ -17,6 +17,13 @@ export default {
   },
 
   methods: {
+   async getData() {
+        const usersRef = this.$fire.firestore.collection("USERS");
+    const users = await usersRef.get();
+    users.forEach(doc => {
+      this.FireData = doc.data();
+    });
+    },
     logout() {
       this.$fire.auth
         .signOut()
